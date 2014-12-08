@@ -2,7 +2,7 @@ everyday_unix_bioinformatics
 ============================
 This repos documents the everyday unix functions that I use.
 
-Using brace expansion to create directory structure
+# **Using brace expansion to create directory structure**
 ``` shell
 mkdir -p directory/{src,bin,lib,man}
 ```
@@ -16,7 +16,7 @@ $ find . | grep directory
   ./directory/src
 ```
 
-Super simple gff to bed creator
+# **Super simple gff to bed creator.**
 This assumes the chromosome name is field 1 of the GFF file.
 * Step 1: Pull fields 1, 4 and 5 (Name, Left and Right respectively)
 * Step 2: Get rid of comment lines
