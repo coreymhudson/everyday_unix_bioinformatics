@@ -6,6 +6,15 @@ Using brace expansion to create directory structure
 ``` shell
 mkdir -p directory/{src,bin,lib,man}
 ```
+After this is run, the directory structure will be as below
+``` shell
+find . | grep directory
+./directory
+./directory/bin
+./directory/lib
+./directory/man
+./directory/src
+```
 
 Super simple gff to bed creator
 This assumes the chromosome name is field 1 of the GFF file.
