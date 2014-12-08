@@ -8,12 +8,12 @@ mkdir -p directory/{src,bin,lib,man}
 ```
 After this is run, the directory structure will be as below
 ``` shell
-find . | grep directory
-#./directory
-#./directory/bin
-#./directory/lib
-#./directory/man
-#./directory/src
+$ find . | grep directory
+  ./directory
+  ./directory/bin
+  ./directory/lib
+  ./directory/man
+  ./directory/src
 ```
 
 Super simple gff to bed creator
