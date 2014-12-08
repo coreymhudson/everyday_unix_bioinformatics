@@ -6,3 +6,12 @@ Using brace expansion to create directory structure
 ``` shell
 mkdir -p directory/{src,bin,lib,man}
 ```
+
+Super simple gff to bed creator
+This assumes the chromosome name is field 1 of the GFF file.
+* Step 1: Pull fields 1, 4 and 5 (Name, Left and Right respectively)
+* Step 2: Get rid of comment lines
+* Step 3: Sort first by chromosome, then numerically by the left position
+``` shell
+cut -f1,4,5 Ncbi_Gff_File.gff | grep -v '^#' | sort -k1,1 -k2n,2
+```
