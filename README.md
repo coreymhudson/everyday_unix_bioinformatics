@@ -29,3 +29,8 @@ cut -f1,4,5 Ncbi_Gff_File.gff | grep -v '^#' | sort -k1,1 -k2n,2
 ``` shell
 awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' file1.fastq > file1.fasta
 ```
+
+### ***Simple command to compare the sizes of two files.***
+``` shell
+bc -l <<< `stat -c "%s" file1`/`stat -c "%s" file2`
+```
