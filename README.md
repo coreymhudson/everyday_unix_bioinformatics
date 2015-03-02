@@ -39,3 +39,8 @@ bc -l <<< `stat -c "%s" file1`/`stat -c "%s" file2`
 ``` shell
 bunzip2 -c file.bz2 | gzip > file.gz
 ```
+
+### **Report only the highest scoring hmmsearch tblout results.**
+``` shell
+grep -v "^#" results.tbl | awk '{print $1"\t"$4"\t"$5}' | sort -k1,1 -k3g | awk '$1!=h {print} {h=$1}'
+```
