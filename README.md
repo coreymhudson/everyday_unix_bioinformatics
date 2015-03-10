@@ -44,3 +44,8 @@ bunzip2 -c file.bz2 | gzip > file.gz
 ``` shell
 grep -v "^#" results.tbl | awk '{print $1"\t"$4"\t"$5}' | sort -k1,1 -k3g | awk '$1!=h {print} {h=$1}'
 ```
+
+### **Break fasta at first space.**
+``` shell
+awk '{if ($1 ~ />/){print $1} else {print $0}}' file1.fasta > file2.fasta
+```
