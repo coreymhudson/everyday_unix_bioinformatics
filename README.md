@@ -49,3 +49,8 @@ grep -v "^#" results.tbl | awk '{print $1"\t"$4"\t"$5}' | sort -k1,1 -k3g | awk 
 ``` shell
 awk '{if ($1 ~ />/){print $1} else {print $0}}' file1.fasta > file2.fasta
 ```
+
+### **Find the average sequence length in a fastq file.**
+```
+awk '(NR%4==2){l+=length; i+=1} END {print l/i}' file.fastq
+```
