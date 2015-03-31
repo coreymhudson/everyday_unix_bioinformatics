@@ -54,3 +54,8 @@ awk '{if ($1 ~ />/){print $1} else {print $0}}' file1.fasta > file2.fasta
 ```
 awk '(NR%4==2){l+=length; i+=1} END {print l/i}' file.fastq
 ```
+
+### **Convert fasta to CSV...you know, as one always does.***
+```
+echo '"name","sequence"' && cat file.fna | cut -f1 -d" " | awk '{if ($1 ~ ">") {if(h != ""){print "\""h"\",\""s"\""}; s="";h=substr($1,2);} else{s=s$1}} END {print "\""h"\",\""s"\""}'
+```
