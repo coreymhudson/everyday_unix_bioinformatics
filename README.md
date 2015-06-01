@@ -59,3 +59,8 @@ awk '(NR%4==2){l+=length; i+=1} END {print l/i}' file.fastq
 ```
 echo '"name","sequence"' && cat file.fna | cut -f1 -d" " | awk '{if ($1 ~ ">") {if(h != ""){print "\""h"\",\""s"\""}; s="";h=substr($1,2);} else{s=s$1}} END {print "\""h"\",\""s"\""}'
 ```
+
+### **Find all the .fna files added today and gzip them.**
+```
+find ./*.fna -mtime -1 -type f -exec gzip {} \;
+```
