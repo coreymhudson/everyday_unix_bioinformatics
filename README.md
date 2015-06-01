@@ -64,3 +64,8 @@ echo '"name","sequence"' && cat file.fna | cut -f1 -d" " | awk '{if ($1 ~ ">") {
 ```
 find ./*.fna -mtime -1 -type f -exec gzip {} \;
 ```
+
+### **Alternatively the last task can be done in parallel. Major time savings (sometimes).**
+```
+find ./*.fna -mtime -1 -type f -print0 | parallel -q0 gzip
+```
