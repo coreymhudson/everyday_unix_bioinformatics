@@ -69,3 +69,17 @@ find ./*.fna -mtime -1 -type f -exec gzip {} \;
 ```
 find ./*.fna -mtime -1 -type f -print0 | parallel -q0 gzip
 ```
+
+### **Find repeat regions in the same genome, using blast.**
+Set up the database
+```
+makeblastdb -in sequence.fa -out sequence -dbtype nucl
+```
+Query the database for all self-hits that aren't that aren't the same region
+```
+blastn -query sequence.fa -db sequence -outfmt 6 | awk '($1==$2)&&(($7!=$9)||($8!=$10)){print $0}'
+```
+If the sequence.fa file is large, you can gain serious speedups by parallelizing
+```
+cat sequence.fa | parallel --block 50k --recstart '>' --pipe blastn -outfmt 6 -db sequence -query - | awk '($1==$2)&&(($7!=$9)||($8!=$10)){print $0}'
+```
