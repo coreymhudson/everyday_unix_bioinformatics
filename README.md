@@ -88,3 +88,8 @@ cat sequence.fa | parallel --block 50k --recstart '>' --pipe blastn -outfmt 6 -d
 ```
 hmmfetch -f list_of_pfams Pfam-A.hmm > shortened_pfams.hmm
 ```
+
+### **Find all files larger than 5gb and sort the output by size.**
+```
+find . -type f -size +5G -exec ls -lShr {} \;
+```
