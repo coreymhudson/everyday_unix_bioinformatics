@@ -83,3 +83,8 @@ If the sequence.fa file is large, you can gain serious speedups by parallelizing
 ```
 cat sequence.fa | parallel --block 50k --recstart '>' --pipe blastn -outfmt 6 -db sequence -query - | awk '($1==$2)&&(($7!=$9)||($8!=$10)){print $0}'
 ```
+
+### **Grep a list of hmms from an hmm database (this may be too simple).**
+```
+hmmfetch -f list_of_pfams Pfam-A.hmm > shortened_pfams.hmm
+```
