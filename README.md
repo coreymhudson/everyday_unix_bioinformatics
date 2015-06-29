@@ -93,3 +93,8 @@ hmmfetch -f list_of_pfams Pfam-A.hmm > shortened_pfams.hmm
 ```
 find . -type f -size +5G -exec ls -lShr {} \;
 ```
+
+### **Gzip all fq files in a directory.**
+```
+parallel --gnu gzip  ::: *.fq
+```
