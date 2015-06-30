@@ -98,3 +98,8 @@ find . -type f -size +5G -exec ls -lShr {} \;
 ```
 parallel --gnu gzip  ::: *.fq
 ```
+
+### **Concatenate a file into an already compressed file.**
+``` 
+gzip -c file.fq >> compress_file.fq.gz
+```
