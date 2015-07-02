@@ -103,3 +103,8 @@ parallel --gnu gzip  ::: *.fq
 ``` 
 gzip -c file.fq >> compress_file.fq.gz
 ```
+
+### **List only the files in the current directory that are currently being written.**
+```
+lsof | grep `pwd` | grep '1w' | awk '{print $9}' | xargs -r ls -l
+```
