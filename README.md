@@ -108,3 +108,9 @@ gzip -c file.fq >> compress_file.fq.gz
 ```
 lsof | grep `pwd` | grep '1w' | awk '{print $9}' | xargs -r ls -l
 ```
+
+### **A job is running...I want to start a new job as soon as it stops.**
+This will print "Waiting..." to the screen until the job is done and everything is ready.
+```
+echo Waiting...; while ps -p $PID > /dev/null; do sleep 1; done; nohup script.sh &
+```
