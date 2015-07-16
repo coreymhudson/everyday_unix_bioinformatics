@@ -114,3 +114,8 @@ This will print "Waiting..." to the screen until the job is done and everything 
 ```
 echo Waiting...; while ps -p $PID > /dev/null; do sleep 1; done; nohup script.sh &
 ```
+
+### **Delete all files in directory but one.**
+```
+find . -type f -not -name "NC_000913.fna" | xargs rm
+```
