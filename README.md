@@ -119,3 +119,8 @@ echo Waiting...; while ps -p $PID > /dev/null; do sleep 1; done; nohup script.sh
 ```
 find . -type f -not -name "NC_000913.fna" | xargs rm
 ```
+
+### **Parallellize prodigal.**
+```
+cat output.fna | parallel --block 50k --recstart '>' --pipe ~/Desktop/Job/Sandia/software/Prodigal/prodigal -a /dev/stdout -d /dev/stderr -q -p meta -o output_test.gff -f gff 1>>out.faa 2>>out.ffn
+```
